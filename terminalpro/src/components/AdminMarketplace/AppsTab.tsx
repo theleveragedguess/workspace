@@ -162,6 +162,7 @@ export function AppsTab() {
         <button
           className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 obb-small-navbar-btn rounded flex items-center justify-center"
           onClick={() => dispatch({ reviewApp: app })}
+          aria-label="View app details"
         >
           <Icon id="app-details" className="size-3.5" />
         </button>

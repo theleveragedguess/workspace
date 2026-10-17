@@ -71,7 +71,12 @@ export function WhitelistTab() {
   const renderRowActions = useCallback(
     (entry: WhitelistEntry) => (
       <Tooltip position="top" message="Remove">
-        <button type="button" className={ACTION_BTN} onClick={() => setRemoving(entry)}>
+        <button
+          type="button"
+          className={ACTION_BTN}
+          onClick={() => setRemoving(entry)}
+          aria-label="Remove developer"
+        >
           <Icon id="trash-icon" className="size-3.5" />
         </button>
       </Tooltip>
