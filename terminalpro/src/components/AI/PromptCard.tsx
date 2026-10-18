@@ -87,6 +87,7 @@ export const PromptCard = memo(function PromptCard({
             <Tooltip message="Move up">
               <button
                 type="button"
+                aria-label="Move up"
                 disabled={!canMoveUp}
                 onClick={handleMoveUp}
                 className={cn(
@@ -100,6 +101,7 @@ export const PromptCard = memo(function PromptCard({
             <Tooltip message="Move down">
               <button
                 type="button"
+                aria-label="Move down"
                 disabled={!canMoveDown}
                 onClick={handleMoveDown}
                 className={cn(
@@ -116,6 +118,7 @@ export const PromptCard = memo(function PromptCard({
           <Tooltip message="Duplicate to My Prompts">
             <button
               type="button"
+              aria-label="Duplicate to My Prompts"
               onClick={handleDuplicate}
               className="obb-small-navbar-btn"
             >
@@ -124,7 +127,7 @@ export const PromptCard = memo(function PromptCard({
           </Tooltip>
         )}
         <Tooltip message="Copy to clipboard">
-          <button type="button" onClick={handleCopy} className="obb-small-navbar-btn">
+          <button type="button" aria-label="Copy to clipboard" onClick={handleCopy} className="obb-small-navbar-btn">
             <Icon id="clipboard-icon" className="size-3.5" />
           </button>
         </Tooltip>
@@ -133,6 +136,7 @@ export const PromptCard = memo(function PromptCard({
             <Tooltip message="Edit">
               <button
                 type="button"
+                aria-label="Edit prompt"
                 onClick={handleEdit}
                 className="obb-small-navbar-btn"
               >
@@ -142,6 +146,7 @@ export const PromptCard = memo(function PromptCard({
             <Tooltip message="Delete">
               <button
                 type="button"
+                aria-label="Delete prompt"
                 onClick={handleDelete}
                 className="obb-small-navbar-btn"
               >
@@ -183,6 +188,7 @@ export const PromptCard = memo(function PromptCard({
         <button
           type="button"
           onClick={toggleExpanded}
+          aria-expanded={isExpanded}
           className="min-w-0 flex-1 cursor-pointer truncate text-left text-xs text-light-900 dark:text-light-100"
         >
           <TextStyle content={prompt.prompt} singleLine />
