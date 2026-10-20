@@ -1,6 +1,7 @@
 import * as Avatar from "@radix-ui/react-avatar";
 import clsx from "clsx";
 import dayjs from "dayjs";
+import DOMPurify from "dompurify";
 import { useMemo } from "react";
 import DraggableCard from "~/components/DraggableCard";
 import Icon from "~/components/Icon";
@@ -173,12 +174,13 @@ export default function BigStories({
                   <p
                     className="text-light-600 dark:text-[#8A8A90]"
                     dangerouslySetInnerHTML={{
-                      __html:
+                      __html: DOMPurify.sanitize(
                         news?.teaser?.trim() !== ""
                           ? `${news?.teaser}${news?.teaser?.endsWith(".") ? "" : "..."}`
                           : news.text?.length > 40
                             ? `${news.text?.slice(0, 40)}...`
-                            : news?.text,
+                            : news?.text || "",
+                      ),
                     }}
                   />
                 </div>
