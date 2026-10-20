@@ -162,7 +162,7 @@ export default function GeneralTab() {
                   </>
                 }
               >
-                <button type="button" className="ml-2">
+                <button type="button" className="ml-2" aria-label="AI enhancements information">
                   <Icon id="info-circled-icon" />
                 </button>
               </Tooltip>
