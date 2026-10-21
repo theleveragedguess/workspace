@@ -862,7 +862,8 @@ async def process_snowflake_oauth(request: Request):
         admin_checks = {**ADMIN_CHECKS, "grantee_name": sf_user}
 
         with Session.builder.configs({**cfg, "token": token}).create() as session:
-            grants = session.sql(f"SHOW GRANTS TO USER {sf_user}").collect()
+            safe_sf_user = sf_user.replace('"', '""')
+            grants = session.sql(f'SHOW GRANTS TO USER "{safe_sf_user}"').collect()
             for r in grants:
                 row = r.as_dict()
                 if all(row.get(k) == v for k, v in admin_checks.items()):
