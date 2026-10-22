@@ -1,0 +1,4 @@
+## 2025-02-24 - Cross-Site Scripting (XSS) vulnerability via dangerouslySetInnerHTML
+**Vulnerability:** XSS via `dangerouslySetInnerHTML` in components like `XmlViewer` rendering third-party/external markup.
+**Learning:** Components fetching external data (like `XmlViewer` rendering RSS XML elements directly) pass unfiltered strings to `dangerouslySetInnerHTML`. Because external source text contains untrusted HTML and is injected directly into the DOM, it poses a High severity risk for arbitrary script execution.
+**Prevention:** We must always wrap inputs going to `dangerouslySetInnerHTML` with `sanitizeHtml` from `~/lib/utils/sanitize` to use DOMPurify when dealing with untrusted text in React.
