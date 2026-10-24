@@ -9,6 +9,7 @@ import type { BenzingaCompanyNewsData as CompanyNews } from "~/lib/api/sdkSchema
 import { getRandomBenzingaImage, slugify } from "~/lib/utils";
 import NewsDialog from "./NewsDialog";
 import { type NewsData, useNewsStockData } from "./useNewsStockData";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 
 export default function BigStories({
   channel,
@@ -172,14 +173,11 @@ export default function BigStories({
                   </p>
                   <p
                     className="text-light-600 dark:text-[#8A8A90]"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        news?.teaser?.trim() !== ""
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(news?.teaser?.trim() !== ""
                           ? `${news?.teaser}${news?.teaser?.endsWith(".") ? "" : "..."}`
                           : news.text?.length > 40
                             ? `${news.text?.slice(0, 40)}...`
-                            : news?.text,
-                    }}
+                            : news?.text || "") }}
                   />
                 </div>
               </div>

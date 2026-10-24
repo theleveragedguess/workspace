@@ -1,3 +1,4 @@
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import DraggableCard from "~/components/DraggableCard";
 import type { Widget } from "~/lib/state/app";
 
@@ -19,7 +20,7 @@ export default function PyScript({
         dangerouslySetInnerHTML={{
           __html: `
           <py-repl>
-            ${widget.data.html ? widget.data.html : ""}
+            ${sanitizeHtml(widget.data.html || "")}
           </py-repl>
           `,
         }}
