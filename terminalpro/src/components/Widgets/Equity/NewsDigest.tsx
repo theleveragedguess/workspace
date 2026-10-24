@@ -16,6 +16,7 @@ import {
 } from "~/lib/api/sdkComponents";
 import type { FMPEquityQuoteData as EquityQuote } from "~/lib/api/sdkSchemas";
 import { useShallowAppStore } from "~/lib/state/app";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import { cn, formatDate } from "~/lib/utils";
 import TickerInfo from "../Helpers/TickerInfo";
 import { ExternalLinkDialog } from "./News/NewsDialog";
@@ -260,7 +261,7 @@ export function NewsDialogContent({
                     <p key={index} className="my-3 first:mt-0">
                       <span
                         className="font-medium text-[#EF7D00] dark:text-[#FB923C]"
-                        dangerouslySetInnerHTML={{ __html: item.title }}
+                        dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.title || "") }}
                       />
                       <span className="dark:text-light-100 text-light-900 mr-1">
                         {` — ${item.text}`}
@@ -295,7 +296,7 @@ export function NewsDialogContent({
                     <p key={index} className="my-3 first:mt-0">
                       <span
                         className="font-medium text-[#EF7D00] dark:text-[#FB923C]"
-                        dangerouslySetInnerHTML={{ __html: item.title }}
+                        dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.title || "") }}
                       />
                       <span className="dark:text-light-100 text-light-900 mr-1">
                         {` — ${item.text}`}

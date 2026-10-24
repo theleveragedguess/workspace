@@ -5,6 +5,7 @@ import { useDebounceValue, useUpdateEffect } from "usehooks-ts";
 import { useStateReducer } from "~/hooks/useStateReducer";
 import { type OldRSSFeed, RSS_FEEDS, type RSSFeed } from "~/lib/constants";
 import { getConfig } from "~/lib/runtimeConfig";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import { parseFeedXml } from "~/lib/utils/feedParser";
 import DraggableCard from "../DraggableCard";
 import { Input } from "../ds/atoms/Input";
@@ -232,11 +233,11 @@ export default RSSViewer;
               <p
                 className="text-[#808080]"
                 dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(rss?.content
+                  __html: sanitizeHtml(rss?.content
                     ? rss?.content
                     : rss.content?.length > 40
                       ? `${rss.content?.slice(0, 40)}...`
-                      : rss?.content)
+                      : rss?.content || "")
                 }}
               />
               <p className="whitespace-nowrap text-[#808040]">

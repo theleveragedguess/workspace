@@ -1,3 +1,4 @@
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import { useEffect, useMemo, useState } from "react";
 import Floater from "react-floater";
 import { useLocation, useParams } from "react-router-dom";
@@ -102,7 +103,7 @@ const TourGuide = () => {
             </div>
             <div
               className="text-xs"
-              dangerouslySetInnerHTML={{ __html: step.description }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(step.description || "") }}
             />
             <button
               className="underline-offset-4 underline mt-4 w-fit ml-auto text-light-300"
@@ -211,7 +212,7 @@ const TourGuide = () => {
           </div>
           <div
             className="text-xs"
-            dangerouslySetInnerHTML={{ __html: step.description }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(step.description || "") }}
           />
         </div>
       }

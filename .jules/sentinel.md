@@ -1,0 +1,4 @@
+## 2024-05-24 - Unsanitized HTML rendering via dangerouslySetInnerHTML
+**Vulnerability:** Several components (TourGuide, XmlViewer, PyScript, RssViewer, NewsDigest, BigStories, EarningsTranscript) were using `dangerouslySetInnerHTML` to render HTML directly from user data or external API sources (RSS feeds, news feeds, XML data) without any sanitization. This introduced a significant Cross-Site Scripting (XSS) risk.
+**Learning:** This existed because data from these specific APIs or external files was implicitly trusted. However, even if coming from known providers, passing untrusted/external HTML straight to the DOM is always a risk (it may contain malicious payload).
+**Prevention:** Always use `sanitizeHtml` from `~/lib/utils/sanitize` before passing content to `dangerouslySetInnerHTML`. Furthermore, to avoid crashing React with `undefined`, ensure a fallback string `|| ""` is provided (e.g. `sanitizeHtml(content || "")`).

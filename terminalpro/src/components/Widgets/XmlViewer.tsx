@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import { useJsonData } from "~/lib/api";
 import DraggableCard from "../DraggableCard";
 import { AgGridProvider } from "../General/Table/hooks";
@@ -57,7 +58,7 @@ const XMLViewer = () => {
             whiteSpace: "pre-wrap",
             padding: "10px",
           }}
-          dangerouslySetInnerHTML={{ __html: xmlContent }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(xmlContent || "") }}
         />
       ) : null}
     </DraggableCard>
