@@ -214,7 +214,7 @@ const SecurityTab = () => {
                 </>
               }
             >
-              <button type="button" className="ml-2">
+              <button type="button" aria-label="Information about 2FA" className="ml-2">
                 <Icon id="info-circled-icon" />
               </button>
             </Tooltip>

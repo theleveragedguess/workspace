@@ -450,7 +450,7 @@ function ParametersSection() {
               tooltip="Configure parameter settings"
               canCollapse={false}
               rightElement={
-                <button onClick={() => removeParameter(index)}>
+                <button aria-label="Remove parameter" onClick={() => removeParameter(index)}>
                   <Icon id="trash-04" className="size-4" />
                 </button>
               }
