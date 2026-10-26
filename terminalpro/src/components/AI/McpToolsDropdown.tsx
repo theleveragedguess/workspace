@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useCallback,
 } from "react";
 import { Link } from "react-router-dom";
 import { Checkbox } from "~/components/ds/atoms/Checkbox";
@@ -165,6 +166,11 @@ export function McpToolsDropdown({
 }: McpToolsDropdownProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  const handleSearchChange = useCallback(
+    (val: string) => setSearchQuery(val),
+    []
+  );
+
   const { servers, getMCPConnection, mcpConnectionRegistry } = useShallowMcpToolsStore(
     (state) => ({
       servers: state.servers,
@@ -173,16 +179,18 @@ export function McpToolsDropdown({
     }),
   );
 
-  // Filter servers to only show connected ones, and filter tools based on search query
-  const filteredServers = useMemo(() => {
-    // First, filter to only connected servers, collapsing duplicate copies of
-    // the same iframe widget into a single entry
-    let processedServers = dedupeIframeServersByUrl(
+  const connectedServers = useMemo(() => {
+    return dedupeIframeServersByUrl(
       servers.filter((server) => {
         const connection = getMCPConnection(server.id);
         return connection?.state === "ready" && server.enabled;
       }),
     );
+  }, [servers, getMCPConnection, mcpConnectionRegistry]);
+
+  // Filter servers to only show connected ones, and filter tools based on search query
+  const filteredServers = useMemo(() => {
+    let processedServers = connectedServers;
 
     // Apply search filter if query exists
     if (searchQuery) {
@@ -215,7 +223,7 @@ export function McpToolsDropdown({
     }
 
     return processedServers;
-  }, [servers, searchQuery, getMCPConnection, mcpConnectionRegistry]);
+  }, [connectedServers, searchQuery]);
 
   return (
     <PopoverRoot open={open} onOpenChange={onOpenChange}>
@@ -253,7 +261,7 @@ export function McpToolsDropdown({
               type="text"
               prefix={<Icon id="search" />}
               value={searchQuery}
-              onChange={(val) => setSearchQuery(val)}
+              onChange={handleSearchChange}
               placeholder="Search servers and tools"
             />
           </div>
