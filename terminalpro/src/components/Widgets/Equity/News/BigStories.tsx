@@ -7,6 +7,7 @@ import Icon from "~/components/Icon";
 import { useNewsWorld } from "~/lib/api/sdkComponents";
 import type { BenzingaCompanyNewsData as CompanyNews } from "~/lib/api/sdkSchemas";
 import { getRandomBenzingaImage, slugify } from "~/lib/utils";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import NewsDialog from "./NewsDialog";
 import { type NewsData, useNewsStockData } from "./useNewsStockData";
 
@@ -173,12 +174,13 @@ export default function BigStories({
                   <p
                     className="text-light-600 dark:text-[#8A8A90]"
                     dangerouslySetInnerHTML={{
-                      __html:
-                        news?.teaser?.trim() !== ""
+                      __html: sanitizeHtml(
+                        (news?.teaser?.trim() !== ""
                           ? `${news?.teaser}${news?.teaser?.endsWith(".") ? "" : "..."}`
                           : news.text?.length > 40
                             ? `${news.text?.slice(0, 40)}...`
-                            : news?.text,
+                            : news?.text) || "",
+                      ),
                     }}
                   />
                 </div>

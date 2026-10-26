@@ -7,6 +7,7 @@ import {
   type TutorialStep,
   useShallowTutorialStore,
 } from "~/lib/state/tutorial";
+import { sanitizeHtml } from "~/lib/utils/sanitize";
 import { Button } from "../ds/atoms/Button";
 import { Dialog, DialogContent } from "../ds/dialogs/Dialog";
 import Icon from "../Icon";
@@ -102,7 +103,7 @@ const TourGuide = () => {
             </div>
             <div
               className="text-xs"
-              dangerouslySetInnerHTML={{ __html: step.description }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(step.description || "") }}
             />
             <button
               className="underline-offset-4 underline mt-4 w-fit ml-auto text-light-300"
@@ -211,7 +212,7 @@ const TourGuide = () => {
           </div>
           <div
             className="text-xs"
-            dangerouslySetInnerHTML={{ __html: step.description }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(step.description || "") }}
           />
         </div>
       }
