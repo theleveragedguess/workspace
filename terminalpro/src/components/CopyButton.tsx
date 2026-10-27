@@ -14,6 +14,7 @@ export default function CopyButton({ text, className, copyClassName }: Props) {
       <Popover.Anchor>
         <Popover.Trigger
           type="button"
+          aria-label="Copy to clipboard"
           onClick={() => navigator.clipboard.writeText(text)}
           className={twMerge(
             "_link-icon backdrop-blur-xs text-light-500 dark:text-light-400",
