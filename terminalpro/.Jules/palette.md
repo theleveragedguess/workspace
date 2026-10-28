@@ -1,0 +1,3 @@
+## 2025-02-28 - Adding aria-labels to Tooltips
+**Learning:** Found multiple instances where interactive, icon-only `<button>`s inside `<Tooltip>` components were missing accessible names. While tooltips provide visual context on hover, screen readers still need the accessible name on the button itself.
+**Action:** When adding icon-only buttons with tooltips, make sure to give the button an `aria-label` that corresponds to the tooltip message.

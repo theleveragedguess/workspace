@@ -160,6 +160,7 @@ export function AppsTab() {
     (app: AdminApp) => (
       <Tooltip message="View app details">
         <button
+          aria-label="View app details"
           className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 obb-small-navbar-btn rounded flex items-center justify-center"
           onClick={() => dispatch({ reviewApp: app })}
         >
