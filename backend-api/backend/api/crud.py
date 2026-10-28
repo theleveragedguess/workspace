@@ -105,7 +105,7 @@ async def bulk_dashboard_insert_update(  # noqa: PLR0912
         DashboardItem.owner_uuid == owner_uuid
     )
     dashes = await db.execute(dash_query)
-    dash_uuids = dashes.scalars().all()
+    dash_uuids = set(dashes.scalars().all())
 
     for key, value in dashboards.items.items():
         if key not in dash_uuids:
@@ -227,7 +227,7 @@ async def bulk_copilot_chats_insert_update(
         .order_by(models.ChatMessages.updated_date.desc())
     )
 
-    chat_uuids = (await db.execute(chat_query)).scalars().all()
+    chat_uuids = set((await db.execute(chat_query)).scalars().all())
     chat_messages_uuids: dict[UUID, list[UUID]] = {}
     for m in (await db.execute(messages_query)).all():
         chat_messages_uuids.setdefault(m.chat_uuid, []).append(m.uuid)
@@ -235,7 +235,7 @@ async def bulk_copilot_chats_insert_update(
     def process_messages(
         messages: dict[str | UUID, Literal["DELETE"] | dict], chat_uuid: UUID
     ):
-        messages_uuids = chat_messages_uuids.get(chat_uuid, [])
+        messages_uuids = set(chat_messages_uuids.get(chat_uuid, []))
 
         for key, msg in messages.items():
             uuid = UUID(key) if isinstance(key, str) else key
