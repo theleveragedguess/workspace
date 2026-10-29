@@ -1,3 +1,5 @@
+import { sanitizeHtml } from "~/lib/utils/sanitize";
+
 export const formatText = (input: string, searchQuery = "", exactMatch = false) => {
   const paragraphs = input.split("\n");
 
@@ -67,5 +69,5 @@ export const highlightSearch = (
     regex,
     (match) => `<span class="match bg-warning-50">${match}</span>`,
   );
-  return <span dangerouslySetInnerHTML={{ __html: highlightedText }} />;
+  return <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(highlightedText || "") }} />;
 };
