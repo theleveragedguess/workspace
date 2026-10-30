@@ -35,6 +35,7 @@
         "noInferrableTypes": "error",
         "noUselessElse": "error",
         "useComponentExportOnlyModules": {
+          "level": "error",
           "options": {
             "allowConstantExport": true
           }
