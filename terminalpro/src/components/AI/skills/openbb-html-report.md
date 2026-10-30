@@ -11,12 +11,14 @@ The user will specify what kind of report they want (equity research, investment
 The template system supports any report type. Below are suggested page structures -- adapt as needed based on the user's request. **The page count is flexible** (1-page summary to 10+ page deep-dive).
 
 ### Equity Research
+
 - **Banner**: `EQUITY RESEARCH`
 - **Page 1**: Two-column cover (narrative left / Key Financial Data + indexed chart right)
 - **Page 2**: Financial tables (Income Statement, Valuation, Credit metrics)
 - **Page 3**: Target Price & Ratings History chart + rating definitions
 
 ### Investment Memo
+
 - **Banner**: `INVESTMENT MEMO`
 - **Page 1**: Two-column cover (thesis left / Key Deal Data right)
 - **Page 2**: Market opportunity & competitive landscape narrative (full-width)
@@ -24,28 +26,33 @@ The template system supports any report type. Below are suggested page structure
 - **Page 4**: Risk matrix & mitigants
 
 ### Credit Analysis
+
 - **Banner**: `CREDIT ANALYSIS`
 - **Page 1**: Two-column cover (credit summary left / Key Credit Data right)
 - **Page 2**: Financial tables focused on leverage, coverage, liquidity
 - **Page 3**: Debt maturity profile chart + covenant analysis
 
 ### Industry Overview
+
 - **Banner**: `INDUSTRY OVERVIEW`
 - **Page 1**: Full-width narrative with key stats sidebar
 - **Page 2**: Market sizing tables + growth projections
 - **Page 3**: Competitive landscape comparison tables
 
 ### Due Diligence Report
+
 - **Banner**: `DUE DILIGENCE`
 - **Page 1**: Two-column cover (summary left / Key Metrics right)
 - **Page 2+**: Detailed findings by category (full-width sections)
 
 ### Portfolio Review
+
 - **Banner**: `PORTFOLIO REVIEW`
 - **Page 1**: Portfolio summary table + allocation chart
 - **Page 2**: Performance attribution + individual holdings analysis
 
 ### Any Other Type
+
 - **Banner**: User-specified or inferred from context (uppercase)
 - Adapt page structure to content needs
 - Use the component library below to assemble pages
@@ -87,6 +94,7 @@ Assemble pages using the CSS framework and component library below.
 Mix and match these components to build any report type. Each component has its own CSS class and HTML structure.
 
 ### Cover Page Components
+
 - `title-banner` -- OpenBB branded banner (WebP image)
 - `cover-layout` -- Two-column layout (58% left / 38% right)
 - `company-name` / `report-title` -- 18pt title
@@ -98,22 +106,26 @@ Mix and match these components to build any report type. Each component has its 
 - `chart-container` -- SVG chart wrapper
 
 ### Financial Table Components
+
 - `fin-table` -- Full-width data table with header row
 - `fin-table .sub-row` -- Italicized indented sub-rows (e.g., % y/y)
 - `fin-table .gap-row` -- Visual spacer between table sections
 - `fin-source` -- Source attribution below tables
 
 ### Chart Components
+
 - Indexed performance line chart (two-series, company vs benchmark)
 - Target price & ratings history chart (dual-axis with step-line)
 - **Any custom SVG chart** -- bar charts, area charts, waterfall charts, pie/donut charts, scatter plots
 
 ### Rating / Scoring Components
+
 - `rating-box` -- Bordered box with rating definitions
 - `tp-history-table` -- Red-header companion table for chart data
 - `tp-layout` -- Side-by-side chart + table layout
 
 ### Full-Width Narrative Components
+
 - Use `body-text` class across full page width (remove `cover-layout` wrapper)
 - Use multiple `section-header` dividers to organize content
 - Tables can be interspersed with narrative paragraphs
@@ -181,22 +193,22 @@ Produce a single HTML file named `{Subject}_{ReportType}_OpenBB_Report.html`. Th
 
 ## COLOR REFERENCE
 
-| Element | Color | Hex |
-|---------|-------|-----|
-| Body text | Black | #000000 |
-| Page background | White | #FFFFFF |
-| OpenBB logo | Black | #000000 |
-| Title banner background | Black | #000000 |
-| Title banner text | White | #FFFFFF |
-| **Main accent** / footer line / table headers | Blue | #0088CC |
-| **Group 1** / Primary chart series | Light Blue | #00AAFF |
-| **Group 2** / Secondary chart series | Pink | #EF6689 |
-| **Group 3** / Tertiary chart series | Green | #16A34A |
-| **Group 4** / Quaternary chart series | Orange | #FB923C |
-| **Group 5** / Quinary chart series | Yellow | #CCBE00 |
-| Table rules | Light gray | #CCCCCC |
-| Chart gridlines | Light gray | #E0E0E0 |
-| Section header underlines | Light gray | #CCCCCC |
+| Element                                       | Color      | Hex     |
+| --------------------------------------------- | ---------- | ------- |
+| Body text                                     | Black      | #000000 |
+| Page background                               | White      | #FFFFFF |
+| OpenBB logo                                   | Black      | #000000 |
+| Title banner background                       | Black      | #000000 |
+| Title banner text                             | White      | #FFFFFF |
+| **Main accent** / footer line / table headers | Blue       | #0088CC |
+| **Group 1** / Primary chart series            | Light Blue | #00AAFF |
+| **Group 2** / Secondary chart series          | Pink       | #EF6689 |
+| **Group 3** / Tertiary chart series           | Green      | #16A34A |
+| **Group 4** / Quaternary chart series         | Orange     | #FB923C |
+| **Group 5** / Quinary chart series            | Yellow     | #CCBE00 |
+| Table rules                                   | Light gray | #CCCCCC |
+| Chart gridlines                               | Light gray | #E0E0E0 |
+| Section header underlines                     | Light gray | #CCCCCC |
 
 ---
 

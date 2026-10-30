@@ -1,10 +1,10 @@
 declare module "react-plotly.js" {
+  import type { Config, Data, Layout } from "plotly.js";
   import type React from "react";
-  import type { Data, Layout, Config } from "plotly.js";
   import type {
-    Figure as FigureType,
-    FigureCallback,
     EventCallback,
+    FigureCallback,
+    Figure as FigureType,
     PlotParams as PlotParamsType,
   } from "react-plotly.js/dist/factory";
 
@@ -24,5 +24,5 @@ declare module "react-plotly.js" {
     layout: Partial<Layout>;
   }
 
-  export type { Figure, FigureCallback, EventCallback, PlotParams };
+  export type { EventCallback, Figure, FigureCallback, PlotParams };
 }

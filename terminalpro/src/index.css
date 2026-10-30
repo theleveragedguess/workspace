@@ -1419,7 +1419,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* align chevron icon to the center*/
 .ag-chart-docked-container
-.ag-tabs-close-button-wrapper.ag-chart-tabbed-menu-close-button-wrapper {
+  .ag-tabs-close-button-wrapper.ag-chart-tabbed-menu-close-button-wrapper {
   display: flex;
 }
 

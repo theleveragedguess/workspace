@@ -1,0 +1,4 @@
+## 2023-10-27 - Unsanitized External News Content XSS
+**Vulnerability:** External news content (like article titles, teasers, and body text) fetched from APIs was being directly rendered into the DOM using React's `dangerouslySetInnerHTML` without proper sanitization.
+**Learning:** Even though the content comes from external news providers, it should be treated as untrusted user input since it is rendered directly into the application's DOM, exposing it to potential Cross-Site Scripting (XSS) attacks if the external data contains malicious payloads.
+**Prevention:** Whenever rendering HTML content using `dangerouslySetInnerHTML` in React, strictly enforce sanitization using `sanitizeHtml` from `~/lib/utils/sanitize`. Always ensure a fallback string (e.g., `value || ""`) is provided to avoid runtime errors with null/undefined values.
